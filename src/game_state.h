@@ -11,9 +11,9 @@ public:
     GameState(sf::RenderWindow& window);
     ~GameState();
 
-    virtual void HandleInput();
-    virtual void Update();
-    virtual void Render();
+    virtual void HandleInput() override;
+    virtual void Update() override;
+    virtual void Render() override;
 
 private:
     std::vector<Entity> entity_list_;
