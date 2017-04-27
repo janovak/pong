@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity::Entity(const int x, const int y, const int width, const int height)
+Entity::Entity(int x, int y, int width, int height)
     : x_(x),
       y_(y),
       width_(width),
@@ -9,21 +9,22 @@ Entity::Entity(const int x, const int y, const int width, const int height)
 }
 
 Entity::~Entity() {
+    
 }
 
-void Entity::SetX(const int x) {
+void Entity::SetX(int x) {
     x_ = x;
 }
 
-void Entity::SetY(const int y) {
+void Entity::SetY(int y) {
     y_ = y;
 }
 
-void Entity::SetWidth(const int width) {
+void Entity::SetWidth(int width) {
     width_ = width;
 }
 
-void Entity::SetHeight(const int height) {
+void Entity::SetHeight(int height) {
     height_ = height;
 }
 

@@ -3,17 +3,19 @@
 
 #include <vector>
 
+#include <SFML/Network/Packet.hpp>
+
 class Message {
 public:
-    virtual std::vector<int8_t> Serialize() = 0;
-    virtual void Deserialize(int8_t* message_buffer, std::size_t length) = 0;
+    virtual sf::Packet Serialize() = 0;
+    virtual void Deserialize(sf::Packet packet) = 0;
 
 protected:
     enum MessageType {
-        kMovementMessageType
+        MOVEMENT_MESSAGE_TYPE
     };
-    
-    int message_type_;
+
+    int messageType_;
 };
 
 #endif

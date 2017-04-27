@@ -3,12 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "connection.h"
 #include "entity.h"
 #include "state.h"
 
 class GameState : public State {
 public:
-    GameState(sf::RenderWindow& window);
+    GameState(sf::RenderWindow& window, Connection& connection);
     ~GameState();
 
     virtual void HandleInput() override;
@@ -18,6 +19,8 @@ public:
 private:
     std::vector<Entity> entity_list_;
     sf::RenderWindow& window_;
+    Connection& connection_;
+    int temporaryTestingPositionDeleteThis_;
 };
 
 #endif

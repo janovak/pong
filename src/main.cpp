@@ -3,7 +3,7 @@
 #include "main_loop.h"
 
 int main(int, char const**) {
-    MainLoop main_loop;
-    main_loop.Loop();
+    MainLoop mainLoop;
+    mainLoop.Loop();
     return EXIT_SUCCESS;
 }

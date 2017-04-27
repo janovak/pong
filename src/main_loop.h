@@ -5,7 +5,6 @@
 #include <stack>
 
 #include "game_state.h"
-#include "state.h"
 
 class MainLoop {
 public:
@@ -15,8 +14,8 @@ public:
     void Loop();
 
 private:
-    std::shared_ptr<GameState> current_game_state_;
-    std::stack<std::shared_ptr<GameState>> game_state_stack_;
+    std::shared_ptr<GameState> currentGameState_;
+    std::stack<std::shared_ptr<GameState>> gameStateStack_;
 };
 
 #endif

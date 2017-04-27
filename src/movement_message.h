@@ -1,23 +1,23 @@
 #ifndef movement_message_h
 #define movement_message_h
 
-#include <vector>
+#include <SFML/Network/Packet.hpp>
 
 #include "message.h"
 
 class MovementMessage : public Message {
 public:
     MovementMessage();
-    MovementMessage(const unsigned int entity_id, const unsigned int position);
+    MovementMessage(unsigned int entitId, unsigned int position);
     ~MovementMessage();
 
-    std::vector<int8_t> Serialize() override;
-    void Deserialize(int8_t* message_buffer, std::size_t length) override;
+    sf::Packet Serialize() override;
+    void Deserialize(sf::Packet packet) override;
 
 private:
-    unsigned int entity_id_;
+    unsigned int entityId_;
     unsigned int position_;
-    static const int kMovementMessageLength;
+    static const int MOVEMENT_MESSAGE_LENGTH;
 };
 
 #endif

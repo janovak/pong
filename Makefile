@@ -1,7 +1,7 @@
 CC = clang++
 LFLAGS = -Wall -std=c++14
 CFLAGS = -c $(LFLAGS)
-LIBFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
 SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(addprefix obj/,$(notdir $(SOURCES:.cpp=.o)))
 EXECUTABLE = bin/pong
@@ -11,11 +11,11 @@ all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 	@mkdir -p  bin
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(LIBFLAGS)
+	$(CC) $(LFLAGS) $(OBJECTS) -o $@ $(LIBS)
 
 obj/%.o: src/%.cpp
 	@mkdir -p obj
-	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm obj/*.o $(EXECUTABLE)
