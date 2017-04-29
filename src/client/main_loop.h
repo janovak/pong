@@ -11,8 +11,7 @@ public:
     void Loop();
 
 private:
-    std::shared_ptr<GameState> currentGameState_;
-    std::stack<std::shared_ptr<GameState>> gameStateStack_;
+    std::stack<std::unique_ptr<State>> gameStateStack_;
 };
 
 #endif

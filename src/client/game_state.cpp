@@ -11,7 +11,7 @@
 
 GameState::GameState(Connection& connection)
     : connection_(connection) {
-    entityList_.push_back(std::make_unique<Paddle>(Paddle::PADDLE_WIDTH / 2.F, 0));
+    entityList_.push_back(std::make_unique<Paddle>(Paddle::PADDLE_WIDTH / 2.f, 0));
 }
 
 void GameState::HandleInput(sf::RenderWindow& window) {
