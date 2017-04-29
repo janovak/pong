@@ -9,7 +9,6 @@
 class Paddle : public Entity, public Rectangle {
 public:
     Paddle(float x, float y);
-    ~Paddle();
 
     void HandleInput(sf::RenderWindow& window) override;
     void Update() override;

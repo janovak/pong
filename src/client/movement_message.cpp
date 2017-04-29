@@ -2,18 +2,10 @@
 
 #include <cassert>
 
-MovementMessage::MovementMessage() {
-
-}
-
 MovementMessage::MovementMessage(unsigned int entityId, unsigned int position)
     : entityId_(entityId),
       position_(position) {
     messageType_ = MOVEMENT_MESSAGE_TYPE;
-}
-
-MovementMessage::~MovementMessage() {
-
 }
 
 sf::Packet MovementMessage::Serialize() {

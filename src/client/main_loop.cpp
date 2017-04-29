@@ -2,14 +2,6 @@
 
 #include <memory>
 
-MainLoop::MainLoop() {
-
-}
-
-MainLoop::~MainLoop() {
-
-}
-
 void MainLoop::Loop() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pong");
     window.setFramerateLimit(60);

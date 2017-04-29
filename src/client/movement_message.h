@@ -7,9 +7,7 @@
 
 class MovementMessage : public Message {
 public:
-    MovementMessage();
     MovementMessage(unsigned int entitId, unsigned int position);
-    ~MovementMessage();
 
     sf::Packet Serialize() override;
     void Deserialize(sf::Packet packet) override;

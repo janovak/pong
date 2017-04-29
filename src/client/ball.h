@@ -8,7 +8,6 @@
 
 class Ball : public Entity, public Circle {
     Ball(float x, float y);
-    ~Ball();
 
     void HandleInput(sf::RenderWindow& window) override;
     void Update() override;

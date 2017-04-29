@@ -7,10 +7,6 @@ Ball::Ball(float x, float y) {
     circle_.setOrigin(BALL_RADIUS, BALL_RADIUS);
 }
 
-Ball::~Ball() {
-
-}
-
 void Ball::HandleInput(sf::RenderWindow& window) {
 
 }

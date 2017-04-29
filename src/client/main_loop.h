@@ -8,9 +8,6 @@
 
 class MainLoop {
 public:
-    MainLoop();
-    ~MainLoop();
-
     void Loop();
 
 private:

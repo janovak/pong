@@ -11,10 +11,6 @@ Paddle::Paddle(float x, float y)
     rectangle_.setOrigin(PADDLE_WIDTH / 2.f, PADDLE_HEIGHT / 2.f);
 }
 
-Paddle::~Paddle() {
-
-}
-
 void Paddle::HandleInput(sf::RenderWindow& window) {
     int mouseY = sf::Mouse::getPosition(window).y;
     if (mouseY < HALF_PADDLE_HEIGHT) {

@@ -14,10 +14,6 @@ GameState::GameState(Connection& connection)
     entityList_.push_back(std::make_unique<Paddle>(Paddle::PADDLE_WIDTH / 2.F, 0));
 }
 
-GameState::~GameState() {
-
-}
-
 void GameState::HandleInput(sf::RenderWindow& window) {
     for (auto const& entity : entityList_) {
         entity->HandleInput(window);

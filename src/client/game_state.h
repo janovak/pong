@@ -12,8 +12,7 @@
 class GameState : public State {
 public:
     GameState(Connection& connection);
-    ~GameState();
-
+    
     virtual void HandleInput(sf::RenderWindow& window) override;
     virtual void Update() override;
     virtual void Render(sf::RenderWindow& window) override;

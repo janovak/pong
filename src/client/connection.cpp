@@ -16,10 +16,6 @@ Connection::Connection(const std::string& address, int portNumber) {
     }
 }
 
-Connection::~Connection() {
-
-}
-
 void Connection::Send(sf::Packet& packet) {
     sf::Socket::Status status;
     while (true) {

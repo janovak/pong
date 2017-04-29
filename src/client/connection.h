@@ -10,8 +10,7 @@
 class Connection {
 public:
     Connection(const std::string& address, int portNumber);
-    ~Connection();
-
+    
     void Send(sf::Packet& packet);
     sf::Socket::Status Receive(sf::Packet& packet);
 
