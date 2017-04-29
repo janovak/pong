@@ -15,11 +15,13 @@ public:
     void Update() override;
     void Render(sf::RenderWindow& window) override;
 
+    static constexpr float PADDLE_WIDTH = 20.f;
+    static constexpr float PADDLE_HEIGHT = 50.f;
+    static constexpr float HALF_PADDLE_HEIGHT = PADDLE_HEIGHT / 2.f;
+
 private:
     const float x_;
     const sf::Color paddleColor_;
-    static constexpr float PADDLE_WIDTH = 20.f;
-    static constexpr float PADDLE_HEIGHT = 50.f;
 };
 
 #endif

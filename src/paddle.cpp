@@ -16,7 +16,13 @@ Paddle::~Paddle() {
 }
 
 void Paddle::HandleInput(sf::RenderWindow& window) {
-    rectangle_.setPosition(x_ + rectangle_.getOrigin().x, sf::Mouse::getPosition(window).y);
+    int mouseY = sf::Mouse::getPosition(window).y;
+    if (mouseY < HALF_PADDLE_HEIGHT) {
+        mouseY = HALF_PADDLE_HEIGHT;
+    } else if (mouseY > window.getSize().y - HALF_PADDLE_HEIGHT) {
+        mouseY = window.getSize().y - HALF_PADDLE_HEIGHT;
+    }
+    rectangle_.setPosition(x_, mouseY);
 }
 
 void Paddle::Update() {
