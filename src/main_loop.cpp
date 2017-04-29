@@ -7,14 +7,14 @@ MainLoop::MainLoop() {
 }
 
 MainLoop::~MainLoop() {
-    
+
 }
 
 void MainLoop::Loop() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pong");
     window.setFramerateLimit(60);
     Connection connection("localhost", 3001);
-    currentGameState_ = std::make_shared<GameState>(window, connection);
+    currentGameState_ = std::make_shared<GameState>(connection);
     gameStateStack_.push(currentGameState_);
 
     while (window.isOpen()) {
@@ -26,8 +26,8 @@ void MainLoop::Loop() {
                 window.close();
             }
         }
-        currentGameState_->HandleInput();
+        currentGameState_->HandleInput(window);
         currentGameState_->Update();
-        currentGameState_->Render();
+        currentGameState_->Render(window);
     }
 }

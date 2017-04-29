@@ -5,41 +5,46 @@
 #include <SFML/Network/Packet.hpp>
 #include <SFML/System/InputStream.hpp>
 
+#include "ball.h"
 #include "movement_message.h"
+#include "paddle.h"
 
-GameState::GameState(sf::RenderWindow& window, Connection& connection)
-    : window_(window),
-      connection_(connection) {
+GameState::GameState(Connection& connection)
+    : connection_(connection) {
+    entityList_.push_back(std::make_unique<Paddle>(0, 0));
 }
 
 GameState::~GameState() {
 
 }
 
-void GameState::HandleInput() {
-    int mouse = sf::Mouse::getPosition(window_).y;
-    MovementMessage move(0, mouse);
+void GameState::HandleInput(sf::RenderWindow& window) {
+    for (auto const& entity : entityList_) {
+        entity->HandleInput(window);
+    }
+    MovementMessage move(0, sf::Mouse::getPosition(window).y);
     sf::Packet packet = move.Serialize();
     connection_.Send(packet);
-    if (connection_.Receive(packet) == sf::Socket::Done) {
+    /*if (connection_.Receive(packet) == sf::Socket::Done) {
         int type;
         unsigned int entity_id;
         unsigned int position;
         packet >> type >> entity_id >> position;
         temporaryTestingPositionDeleteThis_ = position;
         std::cerr << type << " " << entity_id << " " << position << std::endl;
-    }
+    }*/
 }
 
 void GameState::Update() {
-    
+    for (auto const& entity : entityList_) {
+        entity->Update();
+    }
 }
 
-void GameState::Render() {
-    window_.clear(sf::Color(0, 0, 0));
-    sf::RectangleShape rectangle(sf::Vector2f(20, 50));
-    rectangle.setPosition(0, temporaryTestingPositionDeleteThis_);
-    rectangle.setFillColor(sf::Color(255, 255, 255));
-    window_.draw(rectangle);
-    window_.display();
+void GameState::Render(sf::RenderWindow& window) {
+    window.clear(sf::Color(0, 0, 0));
+    for (auto const& entity : entityList_) {
+        entity->Render(window);
+    }
+    window.display();
 }

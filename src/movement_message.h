@@ -17,7 +17,6 @@ public:
 private:
     unsigned int entityId_;
     unsigned int position_;
-    static const int MOVEMENT_MESSAGE_LENGTH;
 };
 
 #endif

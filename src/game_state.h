@@ -1,6 +1,8 @@
 #ifndef game_state_h
 #define game_state_h
 
+#include <algorithm>
+
 #include <SFML/Graphics.hpp>
 
 #include "connection.h"
@@ -9,18 +11,16 @@
 
 class GameState : public State {
 public:
-    GameState(sf::RenderWindow& window, Connection& connection);
+    GameState(Connection& connection);
     ~GameState();
 
-    virtual void HandleInput() override;
+    virtual void HandleInput(sf::RenderWindow& window) override;
     virtual void Update() override;
-    virtual void Render() override;
+    virtual void Render(sf::RenderWindow& window) override;
 
 private:
-    std::vector<Entity> entity_list_;
-    sf::RenderWindow& window_;
+    std::vector<std::unique_ptr<Entity>> entityList_;
     Connection& connection_;
-    int temporaryTestingPositionDeleteThis_;
 };
 
 #endif
