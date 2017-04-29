@@ -2,23 +2,24 @@ CC = clang++
 LFLAGS = -Wall -std=c++14
 CFLAGS = -c $(LFLAGS)
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
-SOURCES = $(wildcard src/*.cpp)
-OBJECTS = $(addprefix obj/,$(notdir $(SOURCES:.cpp=.o)))
-EXECUTABLE = bin/pong
+BASEDIR = ../..
+SOURCES = $(wildcard $(BASEDIR)/src/client/*.cpp)
+OBJECTS = $(addprefix $(BASEDIR)/obj/client/,$(notdir $(SOURCES:.cpp=.o)))
+EXECUTABLE = $(BASEDIR)/bin/client/pong
 BINDIR = /usr/bin
 
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	@mkdir -p  bin
+	@mkdir -p $(BASEDIR)/bin/client
 	$(CC) $(LFLAGS) $(OBJECTS) -o $@ $(LIBS)
 
-obj/%.o: src/%.cpp
-	@mkdir -p obj
+$(BASEDIR)/obj/client/%.o: $(BASEDIR)/src/client/%.cpp
+	@mkdir -p $(BASEDIR)/obj/client
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm obj/*.o $(EXECUTABLE)
+	rm -rf $(BASEDIR)/obj/client $(BASEDIR)/bin/client
 
 install:
 	#install -s $(EXECUTABLE) $(BINDIR)
