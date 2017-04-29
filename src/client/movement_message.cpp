@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-MovementMessage::MovementMessage(unsigned int entityId, unsigned int position)
+MovementMessage::MovementMessage(std::uint32_t entityId, std::uint32_t position)
     : entityId_(entityId),
       position_(position) {
     messageType_ = MOVEMENT_MESSAGE_TYPE;
@@ -14,7 +14,7 @@ sf::Packet MovementMessage::Serialize() {
     return packet;
 }
 
-void MovementMessage::Deserialize(sf::Packet packet) {
+void MovementMessage::Deserialize(sf::Packet& packet) {
     if (packet >> messageType_ >> entityId_ >> position_) {
         // successful
     }

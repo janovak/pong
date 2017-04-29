@@ -8,7 +8,7 @@
 class Message {
 public:
     virtual sf::Packet Serialize() = 0;
-    virtual void Deserialize(sf::Packet packet) = 0;
+    virtual void Deserialize(sf::Packet& packet) = 0;
 
 protected:
     enum MessageType {
